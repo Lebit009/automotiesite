@@ -6,6 +6,7 @@ import Home from "./pages/Hero";
 import Products from "./pages/Products";
 import Services from "./pages/Services";
 import About from "./pages/About";
+import "./css/App.css"; // Assuming you have a CSS file for global styles
 
 const App = () => {
   const { theme } = useContext(ThemeContext);

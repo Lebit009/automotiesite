@@ -9,8 +9,8 @@ export default function Navbar() {
   return (
     <div className="navbar">
       <div className="navbar-logo-container">
-        {/* <img src={logo} alt="Logo" className="navbar-logo" /> */}
-        <h1>Automotive</h1>
+        <img src={logo} alt="Logo" className="navbar-logo" />
+        {/* <h1>Automotive</h1> */}
       </div>
       <div className="navbar-link-container">
         <ul>
@@ -38,9 +38,6 @@ export default function Navbar() {
       </div>
       <MdOutlineLightMode className="light-mode-icon" alt="Light Mode" />
       <MdDarkMode className="dark-mode-icon" />
-      <button className="menu-btn">
-        <AiOutlineClose size={28} /> : <AiOutlineMenu size={28} />
-      </button>
     </div>
   );
 }

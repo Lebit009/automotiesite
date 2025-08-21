@@ -18,7 +18,7 @@ const products = [
 ];
 
 const Products = () => (
-  <div>
+  <div className="container">
     <section className="products">
       <div className="card-container">
         {products.map((product) => (
