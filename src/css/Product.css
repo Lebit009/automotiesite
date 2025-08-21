@@ -1,0 +1,18 @@
+.product-image {
+  width: 1px;
+  height: auto;
+  border-bottom: 2px solid #8f3737;
+}
+
+.product-name {
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin: 10px 0;
+}
+.card {
+  border: 1px solid #eee;
+  border-radius: 5px;
+  padding: 10px;
+  text-align: center;
+}

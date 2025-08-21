@@ -1,7 +1,14 @@
-import '../css/HomePage.css';
+import "../css/HomePage.css";
+import logo from "../assets/img/logo.png";
+import Title from "./Title";
 
-const products = ['Engine Parts', 'Suspension Systems', 'Tyres & Wheels', 'Car Accessories'];
-const services = ['Car Maintenance', 'Diagnostics', 'Customization', 'Installation'];
+
+const services = [
+  "Car Maintenance",
+  "Diagnostics",
+  "Customization",
+  "Installation",
+];
 
 const Home = () => {
   return (
@@ -15,40 +22,32 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Products Section */}
-      <section className="products">
-        <h2>Our Products</h2>
-        <div className="card-container">
-          {products.map((product, index) => (
-            <div className="card" key={index}>{product}</div>
-          ))}
-        </div>
-      </section>
-
-      {/* Services Section */}
+      {/* Services Section
       <section className="services">
         <h2>Our Services</h2>
         <div className="card-container">
           {services.map((service, index) => (
-            <div className="card" key={index}>{service}</div>
+            <div className="card" key={index}>
+              {service}
+            </div>
           ))}
         </div>
       </section>
 
-      {/* About Section */}
+      {/* About Section 
       <section className="about">
         <h2>About Us</h2>
         <p>
-          Automotive Hub is committed to providing top-quality automotive products
-          and expert services. We combine experience, technology, and passion to
-          keep your vehicles running smoothly.
+          Automotive Hub is committed to providing top-quality automotive
+          products and expert services. We combine experience, technology, and
+          passion to keep your vehicles running smoothly.
         </p>
       </section>
 
-      {/* Footer */}
+      {/* Footer 
       <footer>
         <p>&copy; 2025 Automotive Hub. All rights reserved.</p>
-      </footer>
+      </footer> */}
     </div>
   );
 };

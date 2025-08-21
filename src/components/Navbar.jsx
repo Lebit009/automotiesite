@@ -1,6 +1,6 @@
 import { MdDarkMode } from "react-icons/md";
 import { MdOutlineLightMode } from "react-icons/md";
-import logo from "../assets/img/logo.jpg";
+import logo from "../assets/img/logo.png";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import "../css/Navbar.css";
 import React, { useState } from "react";
