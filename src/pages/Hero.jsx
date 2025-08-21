@@ -1,4 +1,4 @@
-import "../css/HomePage.css";
+import "../css/Hero.css";
 import logo from "../assets/img/logo.png";
 import Title from "./Title";
 
@@ -10,7 +10,7 @@ const services = [
   "Installation",
 ];
 
-const Home = () => {
+const Hero = () => {
   return (
     <div>
       {/* Hero Section */}
@@ -21,19 +21,7 @@ const Home = () => {
           <button className="hero-btn">Explore Products</button>
         </div>
       </section>
-
-      {/* Services Section
-      <section className="services">
-        <h2>Our Services</h2>
-        <div className="card-container">
-          {services.map((service, index) => (
-            <div className="card" key={index}>
-              {service}
-            </div>
-          ))}
-        </div>
-      </section>
-
+    
       {/* About Section 
       <section className="about">
         <h2>About Us</h2>
@@ -52,4 +40,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Hero;

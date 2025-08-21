@@ -1,5 +1,5 @@
 .product-image {
-  width: 1px;
+  width: 10px;
   height: auto;
   border-bottom: 2px solid #8f3737;
 }
@@ -15,4 +15,12 @@
   border-radius: 5px;
   padding: 10px;
   text-align: center;
+  /* flex: auto; */
+}
+.card-container{
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    justify-content: center;
 }

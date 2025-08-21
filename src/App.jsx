@@ -1,23 +1,28 @@
-import React from 'react'
-import Navbar from './components/Navbar';
-import Home from './components/Home';
-import './App.css';
-import Products from './components/Products';
-import Title from './components/Title';
-const App = () => {
-  const current_theme = localStorage.getItem('current_theme');
-  const [theme, setTheme] = React.useState(current_theme || 'light');
-  React.useEffect(() => {
-    localStorage.setItem('current_theme', theme);
-  }, [theme]);
-  return (
-    <div className={`container ${theme}`}>
-      <Navbar theme={theme} setTheme={setTheme} />
-       <Home />
-       <Title title="Our Products" subtitle="Explore our wide range of products" />
-       <Products />
-    </div>
-  )
-}
+import React, { useContext } from "react";
+import { ThemeContext } from "./pages/ThemeContext";
+import { Routes, Route } from "react-router-dom";
+import Navbar from "./pages/Navbar";
+import Home from "./pages/Hero";
+import Products from "./pages/Products";
+import Services from "./pages/Services";
+import About from "./pages/About";
 
-export default App
+const App = () => {
+  const { theme } = useContext(ThemeContext);
+
+  return (
+    <div className={`app ${theme}-theme`}>
+      <Navbar />
+      <div className="container">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/products" element={<Products />} />
+          <Route path="/services" element={<Services />} />
+          <Route path="/about" element={<About />} />
+        </Routes>
+      </div>
+    </div>
+  );
+};
+
+export default App;
