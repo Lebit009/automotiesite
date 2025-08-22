@@ -1,16 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import serviceBanner from "../assets/img/service.png";
 import "../css/Services.css";
 import Title from "./Title";
 
 const Services = () => {
-  const [selectedOption, setSelectedOption] = useState(null); // Selected service
-  const [date, setDate] = useState("");
-  const [time, setTime] = useState("");
-  const [serviceType, setServiceType] = useState("phone");
-  const [email, setEmail] = useState("");
-  const [feedback, setFeedback] = useState("");
-  const [bookings, setBookings] = useState([]);
+  const [selectedOption, setSelectedOption] = useState(null);
 
   const services = [
     { id: 1, name: "Consultation" },
@@ -19,46 +13,6 @@ const Services = () => {
     { id: 4, name: "Test Drive" },
   ];
 
-  // Load bookings from localStorage
-  useEffect(() => {
-    const savedBookings = JSON.parse(localStorage.getItem("bookings")) || [];
-    setBookings(savedBookings);
-  }, []);
-
-  // Save bookings to localStorage
-  useEffect(() => {
-    localStorage.setItem("bookings", JSON.stringify(bookings));
-  }, [bookings]);
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (!selectedOption) {
-      alert("Please select a service first!");
-      return;
-    }
-
-    const newBooking = {
-      id: Date.now(),
-      serviceName: services.find((s) => s.id === selectedOption).name,
-      date,
-      time,
-      serviceType,
-      email,
-      feedback,
-    };
-
-    setBookings([...bookings, newBooking]);
-
-    // Reset form
-    setDate("");
-    setTime("");
-    setServiceType("phone");
-    setEmail("");
-    setFeedback("");
-  };
-
-  const selectedService = services.find((s) => s.id === selectedOption);
-
   return (
     <>
       <div>
@@ -66,88 +20,127 @@ const Services = () => {
       </div>
 
       <Title
-        title="Services"
-        subtitle={<span>We offer a variety of automotive services</span>}
+        title="Our Services"
+        subtitle={<span>Discover our comprehensive automotive solutions</span>}
       />
 
-      {/* Layout 1: Service Cards */}
       <div className="service-grid">
         {services.map((item) => (
           <div
             key={item.id}
             onClick={() => setSelectedOption(item.id)}
             className={`service-card ${selectedOption === item.id ? "active" : ""}`}
+            tabIndex={0}
+            role="button"
+            aria-pressed={selectedOption === item.id}
           >
             <h3>{item.name}</h3>
           </div>
         ))}
       </div>
-      
-    </>
-  );  
-};
 
-  const Consultation =()=>{
-   <div className="services-container">
-          <h2>Book Service: {selectedService.name}</h2>
-          <form onSubmit={handleSubmit} className="service-form">
+      {selectedOption && (
+        <div className="service-details">
+          {selectedOption === 1 && (
             <div>
-              <label>Date: </label>
-              <input
-                type="date"
-                value={date}
-                onChange={(e) => setDate(e.target.value)}
-                required
-              />
+              <h4>Consultation</h4>
+              <p>Connect with our automotive experts for personalized advice and solutions.</p>
+              <form className="service-form">
+                <label>
+                  Name
+                  <input type="text" placeholder="Your Name" required />
+                </label>
+                <label>
+                  Email
+                  <input type="email" placeholder="Your Email" required />
+                </label>
+                <label>
+                  Message
+                  <textarea placeholder="Your Message" required></textarea>
+                </label>
+                <button type="submit">Book Consultation</button>
+              </form>
             </div>
-
+          )}
+          {selectedOption === 2 && (
             <div>
-              <label>Time: </label>
-              <input
-                type="time"
-                value={time}
-                onChange={(e) => setTime(e.target.value)}
-                required
-              />
+              <h4>Career</h4>
+              <p>Join our team and grow your career in the automotive industry.</p>
+              <form className="service-form">
+                <label>
+                  Name
+                  <input type="text" placeholder="Your Name" required />
+                </label>
+                <label>
+                  Email
+                  <input type="email" placeholder="Your Email" required />
+                </label>
+                <label>
+                  Cover Letter
+                  <textarea placeholder="Tell us about yourself" required></textarea>
+                </label>
+                <button type="submit">Apply Now</button>
+              </form>
             </div>
-
+          )}
+          {selectedOption === 3 && (
             <div>
-              <label>Service Type: </label>
-              <select value={serviceType} onChange={(e) => setServiceType(e.target.value)}>
-                <option value="phone">Phone Service</option>
-                <option value="test-drive">Test Drive</option>
-              </select>
+              <h4>Service Request</h4>
+              <p>Request maintenance or repair services for your vehicle.</p>
+              <form className="service-form">
+                <label>
+                  Name
+                  <input type="text" placeholder="Your Name" required />
+                </label>
+                <label>
+                  Email
+                  <input type="email" placeholder="Your Email" required />
+                </label>
+                <label>
+                  Vehicle Details
+                  <input type="text" placeholder="Make & Model" required />
+                </label>
+                <label>
+                  Service Needed
+                  <textarea placeholder="Describe the service required" required></textarea>
+                </label>
+                <button type="submit">Request Service</button>
+              </form>
             </div>
-
+          )}
+          {selectedOption === 4 && (
             <div>
-              <label>Email: </label>
-              <input
-                type="email"
-                placeholder="Enter your email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-              />
+              <h4>Test Drive</h4>
+              <p>Experience your preferred car with a scheduled test drive.</p>
+              <form className="service-form">
+                <label>
+                  Name
+                  <input type="text" placeholder="Your Name" required />
+                </label>
+                <label>
+                  Email
+                  <input type="email" placeholder="Your Email" required />
+                </label>
+                <label>
+                  Preferred Car Model
+                  <input type="text" placeholder="Car Model" required />
+                </label>
+                <label>
+                  Preferred Date
+                  <input type="date" required />
+                </label>
+                <label>
+                  Preferred Time
+                  <input type="time" required />
+                </label>
+                <button type="submit">Schedule Test Drive</button>
+              </form>
             </div>
-          </form>
+          )}
         </div>
-
-
-      {/* Saved Bookings */}
-      <h2>Saved Bookings</h2>
-      {bookings.length === 0 ? (
-        <p>No bookings yet.</p>
-      ) : (
-        <ul>
-          {bookings.map((b) => (
-            <li key={b.id}>
-              <strong>{b.serviceName}</strong> on {b.date} at {b.time} <br />
-              Type: {b.serviceType} <br />
-              Email: {b.email} <br />
-            </li>
-          ))}
-        </ul>
       )}
-  }
+    </>
+  );
+};
 
 export default Services;

@@ -1,13 +1,7 @@
 import "../css/Hero.css";
-import logo from "../assets/img/logo.png";
 import Title from "./Title";
 import "../css/Parallax.css";
 import serviceworker from "../assets/img/service.png";
-import royalty from "../assets/img/royalty.png";
-import lambo from "../assets/img/lambo.png";
-import bmw from "../assets/img/bmw.png";
-import vw from "../assets/img/ww.png";
-import supercar from "../assets/img/super.png";
 
 const analytics = [
   {
@@ -45,7 +39,7 @@ const Hero = () => {
         <div className="hero-content">
           <h1>Welcome to Automotive Hub</h1>
           <p>Your one-stop destination for quality car parts and services.</p>
-          <button className="hero-btn">Explore Products</button>
+          <button className="hero-btn"><a href="/products">Explore Products</a></button>
         </div>
       </section>
       <section className="experience-section">
@@ -106,8 +100,8 @@ const Hero = () => {
             </div>
           </div>
           <div className="px-content">
-            <h1>Book a Test Drive</h1>
-            <p>Feel the performance before you decide.</p>
+            <h1>Servicing and Maintenance</h1>
+            <p>Feel the performance before and after servicing.</p>
           </div>
         </div>
       </section>
@@ -127,28 +121,6 @@ const Hero = () => {
           ))}
         </div>
       </section>
-      <footer className="company-footer">
-        <div className="footer-content">
-          <div className="footer-logo">
-            <img src={logo} alt="Automotive Hub Logo" />
-            <span>Automotive Hub</span>
-          </div>
-          <div className="footer-links">
-            <a href="/about">About Us</a>
-            <a href="/services">Services</a>
-            {/* <a href="/contact">Contact</a>
-            <a href="/privacy">Privacy Policy</a> */}
-          </div>
-          <div className="footer-contact">
-            <span>Email: info@automotivehub.com</span>
-            <span>Phone: +61 0415651631</span>
-          </div>
-          <div className="footer-copyright">
-            &copy; {new Date().getFullYear()} Automotive Hub. All rights
-            reserved.
-          </div>
-        </div>
-      </footer>
     </>
   );
 };

@@ -1,0 +1,117 @@
+/* About.css - Modern scrollable Automotive Hub UI */
+.about-hub-container {
+  margin: 40px auto;
+  padding: 2rem 1rem;
+}
+
+.about-hub-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #7100b3;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+.about-hub-desc {
+  font-size: 1.2rem;
+  color: #444;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.about-hub-carousel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 340px;
+  position: relative;
+  gap: 2rem;
+}
+
+.about-hub-carousel.multi {
+  gap: 2rem;
+}
+
+.carousel-card {
+  min-width: 260px;
+  max-width: 300px;
+  flex: 1 1 0;
+  transition: box-shadow 0.2s, transform 0.3s;
+  box-shadow: 0 6px 24px rgba(113,0,179,0.12);
+  animation: carouselFade 0.5s;
+  background: #f7f7fa;
+  border-radius: 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@keyframes carouselFade {
+  from { opacity: 0; transform: scale(0.96); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.about-hub-img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 14px 14px 0 0;
+}
+
+.about-hub-card-content {
+  padding: 1rem;
+  text-align: left;
+}
+
+.about-hub-card-content h3 {
+  font-size: 1.2rem;
+  color: #7100b3;
+  margin-bottom: 0.5rem;
+}
+
+.about-hub-card-content p {
+  font-size: 1rem;
+  color: #333;
+}
+
+.carousel-indicators {
+  display: flex;
+  justify-content: center;
+  gap: 0.7rem;
+  margin-top: 1.2rem;
+}
+.carousel-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #e0e0e0;
+  cursor: pointer;
+  transition: background 0.2s;
+  display: inline-block;
+}
+.carousel-dot.active {
+  background: #7100b3;
+}
+
+@media (max-width: 900px) {
+  .about-hub-carousel.multi {
+    gap: 1rem;
+  }
+  .carousel-card {
+    min-width: 180px;
+    max-width: 220px;
+  }
+}
+
+@media (max-width: 600px) {
+  .about-hub-container {
+    padding: 1rem 0.2rem;
+  }
+  .about-hub-carousel.multi {
+    gap: 0.5rem;
+  }
+  .carousel-card {
+    min-width: fit;
+    max-width: 95vw;
+  }
+}

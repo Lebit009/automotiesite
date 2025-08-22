@@ -13,7 +13,7 @@ import radiatorImg from "../assets/img/radiator.png";
 const products = [
   {
     id: 1,
-    name: "Brake Pad Set for Holden Colorado Isuzu D-Max Mu-X LDV T60 Ref DB1841-4WD",
+    name: "Brake Pad Set for Holden Colorado Isuzu D-Max Mu-X LDV T60 ",
     price: "$49.99",
     image: brakePadsImg,
     rating: 4.7,
@@ -48,14 +48,14 @@ const products = [
   },
   {
     id: 6,
-    name: "Headlight Bulb for Volkswagen Golf Polo Passat Tiguan Ref H7 12V 55W",
+    name: "Headlight Bulb for Volkswagen Golf Polo Passat Tiguan",
     price: "$24.99",
     image: headlightBulbImg,
     rating: 4.3,
   },
   {
     id: 7,
-    name: 'Windshield Wipers for Subaru Forester Outback XV Impreza Ref 26"+16"',
+    name: 'Windshield Wipers for Subaru Forester Outback XV"',
     price: "$19.99",
     image: windshieldWipersImg,
     rating: 4.2,
@@ -124,7 +124,21 @@ const Products = () => {
             <img src={product.image} alt={product.name} />
             <h3>{product.name}</h3>
             <p className="price">{product.price}</p>
-            <button className="add-to-cart">Add to Cart</button>
+            <button
+              className="add-to-cart"
+              onClick={() => {
+                let cart = JSON.parse(localStorage.getItem("cart")) || [];
+                const existing = cart.find(item => item.id === product.id);
+                if (existing) {
+                  existing.quantity = (existing.quantity || 1) + 1;
+                } else {
+                  cart.push({ ...product, quantity: 1 });
+                }
+                localStorage.setItem("cart", JSON.stringify(cart));
+              }}
+            >
+              Add to Cart
+            </button>
           </div>
         ))}
       </div>

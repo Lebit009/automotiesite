@@ -26,6 +26,10 @@
   cursor: pointer;
   margin-top: 20px;
 }
+.hero-btn a {
+  color: white;
+  text-decoration: none;
+}
 .hero-btn:hover {
   background-image: linear-gradient(90deg, #00c6ff 0%, #b700ff 100%);
 }
@@ -66,7 +70,7 @@
   font-weight: 700;
   margin-bottom: 0.5rem;
   padding: 0 20px;
-  color: #007bff;
+  color: #3e1c8b;
 }
 
 .experience-description p {
@@ -172,120 +176,4 @@
 .why-prefer-card:hover {
   transform: translateY(-6px) scale(1.03);
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
-}
-
-@media (max-width: 900px) {
-  .why-prefer-cards {
-    gap: 1rem;
-    flex-wrap: wrap;
-  }
-  .why-prefer-card {
-    width: 220px;
-    padding: 1.2rem;
-  }
-}
-
-@media (max-width: 600px) {
-  .why-prefer-section {
-    background: #f7f9fa;
-    padding: 0 0.5rem;
-    border-radius: 0;
-    box-shadow: none;
-    width: 100%;
-    margin: 0 0 2rem 0;
-  }
-  .why-prefer-cards {
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-  }
-  .why-prefer-card {
-    width: 100%;
-    max-width: 320px;
-    margin: 0.5rem 0;
-    padding: 1rem;
-  }
-}
-
-.company-footer {
-  width: 100%;
-  background: #1f1041;
-  color: #fff;
-  padding: 2.5rem 0 1.5rem 0;
-  text-align: center;
-  border-top: 2px solid #007bff;
-  margin-top: 3rem;
-}
-
-.footer-content {
-  max-width: 900px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  align-items: center;
-}
-
-.footer-logo {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 1.2rem;
-  font-weight: 600;
-  margin-bottom: 1rem;
-}
-
-.footer-logo img {
-  height: 40px;
-}
-
-.footer-links {
-  display: flex;
-  gap: 2rem;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin-bottom: 1rem;
-}
-
-.footer-links a {
-  color: #fff;
-  text-decoration: none;
-  font-size: 1.05rem;
-  transition: color 0.2s;
-}
-
-.footer-links a:hover {
-  color: #00c6ff;
-}
-
-.footer-contact {
-  font-size: 1rem;
-  color: #bbb;
-  margin-bottom: 0.5rem;
-  display: flex;
-  gap: 2rem;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.footer-copyright {
-  font-size: 0.95rem;
-  color: #bbb;
-  margin-top: 1rem;
-}
-
-/* Responsive */
-@media (max-width: 600px) {
-  .footer-links {
-    gap: 1rem;
-    flex-direction: column;
-    align-items: center;
-  }
-  .footer-content {
-    gap: 1rem;
-  }
-  .footer-contact {
-    flex-direction: column;
-    gap: 0.5rem;
-  }
 }
