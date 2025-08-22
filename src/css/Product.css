@@ -148,9 +148,8 @@
 
 @media (max-width: 600px) {
   .product-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 8px;
+    display: flex;
+    flex-wrap: wrap;
     margin: 0;
   }
   .product-card {

@@ -9,8 +9,9 @@ import airFilterImg from "../assets/img/air-filter.png";
 import headlightBulbImg from "../assets/img/headlightbulb.png";
 import windshieldWipersImg from "../assets/img/windshield-wipers.png";
 import radiatorImg from "../assets/img/radiator.png";
+import { useCartContext } from "./CartContext";
 
-const products = [
+export const products = [
   {
     id: 1,
     name: "Brake Pad Set for Holden Colorado Isuzu D-Max Mu-X LDV T60 ",
@@ -88,14 +89,16 @@ const tabLabels = [
   "Radiators"
 ];
 const Products = () => {
+  const {insertToCart} = useCartContext()
+
+  console.debug(useCartContext())
+
   const [search, setSearch] = useState("");
   const [selected, setSelected] = useState(null);
 
-  const filteredProducts = search
-    ? products.filter((p) => p.name.toLowerCase().includes(search.toLowerCase()))
-    : selected
-      ? products.filter((p) => p.category === selected)
-      : products;
+  const filteredProductsByName =  search.length ? products.filter(({name})=>name.toLowerCase().startsWith(search.toLowerCase())) : products;
+  const filteredProductsByCategory = selected ? filteredProductsByName.filter(({category})=>category === selected) : filteredProductsByName;
+
   return (
     <div className="products-layout">
       {/* Layout 1 SEarch and tabs*/}
@@ -107,7 +110,7 @@ const Products = () => {
           value={search}
           onChange={(e) => {
             setSearch(e.target.value);
-            setSelected(null);
+           
           }}
           className="search-bar"
         />
@@ -118,7 +121,7 @@ const Products = () => {
               className={`tab-btn ${selected === label ? "active" : ""}`}
               onClick={() => {
                 setSelected(label);
-                setSearch("");
+      
               }}
             >
               {label}
@@ -127,12 +130,12 @@ const Products = () => {
         </div>
       </div>
       <div className="product-grid">
-        {filteredProducts.map((product) => (
+        {filteredProductsByCategory.map((product) => (
           <div className="product-card" key={product.id}>
             <img src={product.image} alt={product.name} />
             <h3>{product.name}</h3>
             <p className="price">{product.price}</p>
-            <button className="add-to-cart">Add to Cart</button>
+            <button className="add-to-cart" onClick={()=>insertToCart(product.id)}>Add to Cart</button>
           </div>
         ))}
       </div>

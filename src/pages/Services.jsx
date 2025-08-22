@@ -5,6 +5,10 @@ import Title from "./Title";
 
 const Services = () => {
   const [selectedOption, setSelectedOption] = useState(null);
+  const [pending, setPending] = useState(false);
+  const [form, setForm] = useState({ name: "", email: "", message: "" });
+  const [requests, setRequests] = useState([]);
+  const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
 
   const services = [
     { id: 1, name: "Consultation" },
@@ -13,8 +17,136 @@ const Services = () => {
     { id: 4, name: "Test Drive" },
   ];
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setPending(true); // mark as pending
+  };
+
+  const renderForm = () => {
+    switch (selectedOption) {
+      case 1:
+        return (
+          <form className="service-form" onSubmit={handleSubmit}>
+            <label>
+              Name
+              <input type="text" placeholder="Your Name" required />
+            </label>
+            <label>
+              Email
+              <input
+                name="email"
+                type="email"
+                placeholder="Your Email"
+                value={form.email || loggedInUser?.email || ""}
+                onChange={(e) => setForm({ ...form, email: e.target.value })}
+                required
+                readOnly={!!loggedInUser}
+              />
+            </label>
+            <label>
+              Message
+              <textarea placeholder="Your Message" required></textarea>
+            </label>
+            <button type="submit">Book Consultation</button>
+          </form>
+        );
+      case 2:
+        return (
+          <form className="service-form" onSubmit={handleSubmit}>
+            <label>
+              Name
+              <input type="text" placeholder="Your Name" required />
+            </label>
+            <label>
+              Email
+              <input
+                name="email"
+                type="email"
+                placeholder="Your Email"
+                value={form.email || loggedInUser?.email || ""}
+                onChange={(e) => setForm({ ...form, email: e.target.value })}
+                required
+                readOnly={!!loggedInUser}
+              />
+            </label>
+            <label>
+              Cover Letter
+              <textarea placeholder="Tell us about yourself" required></textarea>
+            </label>
+            <button type="submit">Apply Now</button>
+          </form>
+        );
+      case 3:
+        return (
+          <form className="service-form" onSubmit={handleSubmit}>
+            <label>
+              Name
+              <input type="text" placeholder="Your Name" required />
+            </label>
+            <label>
+              Email
+              <input
+                name="email"
+                type="email"
+                placeholder="Your Email"
+                value={form.email || loggedInUser?.email || ""}
+                onChange={(e) => setForm({ ...form, email: e.target.value })}
+                required
+                readOnly={!!loggedInUser}
+              />
+            </label>
+            <label>
+              Vehicle Details
+              <input type="text" placeholder="Make & Model" required />
+            </label>
+            <label>
+              Service Needed
+              <textarea placeholder="Describe the service required" required></textarea>
+            </label>
+            <button type="submit">Request Service</button>
+          </form>
+        );
+      case 4:
+        return (
+          <form className="service-form" onSubmit={handleSubmit}>
+            <label>
+              Name
+              <input type="text" placeholder="Your Name" required />
+            </label>
+            <label>
+              Email
+              <input
+                name="email"
+                type="email"
+                placeholder="Your Email"
+                value={form.email || loggedInUser?.email || ""}
+                onChange={(e) => setForm({ ...form, email: e.target.value })}
+                required
+                readOnly={!!loggedInUser}
+              />
+            </label>
+            <label>
+              Preferred Car Model
+              <input type="text" placeholder="Car Model" required />
+            </label>
+            <label>
+              Preferred Date
+              <input type="date" required />
+            </label>
+            <label>
+              Preferred Time
+              <input type="time" required />
+            </label>
+            <button type="submit">Schedule Test Drive</button>
+          </form>
+        );
+      default:
+        return null;
+    }
+  };
+
   return (
-    <>
+    <div className="services-container">
       <div>
         <img src={serviceBanner} alt="Service Banner" className="service-banner" />
       </div>
@@ -28,7 +160,10 @@ const Services = () => {
         {services.map((item) => (
           <div
             key={item.id}
-            onClick={() => setSelectedOption(item.id)}
+            onClick={() => {
+              setSelectedOption(item.id);
+              setPending(false); // reset pending when switching
+            }}
             className={`service-card ${selectedOption === item.id ? "active" : ""}`}
             tabIndex={0}
             role="button"
@@ -39,107 +174,18 @@ const Services = () => {
         ))}
       </div>
 
+      {/* Details show BELOW cards */}
       {selectedOption && (
         <div className="service-details">
-          {selectedOption === 1 && (
-            <div>
-              <h4>Consultation</h4>
-              <p>Connect with our automotive experts for personalized advice and solutions.</p>
-              <form className="service-form">
-                <label>
-                  Name
-                  <input type="text" placeholder="Your Name" required />
-                </label>
-                <label>
-                  Email
-                  <input type="email" placeholder="Your Email" required />
-                </label>
-                <label>
-                  Message
-                  <textarea placeholder="Your Message" required></textarea>
-                </label>
-                <button type="submit">Book Consultation</button>
-              </form>
-            </div>
-          )}
-          {selectedOption === 2 && (
-            <div>
-              <h4>Career</h4>
-              <p>Join our team and grow your career in the automotive industry.</p>
-              <form className="service-form">
-                <label>
-                  Name
-                  <input type="text" placeholder="Your Name" required />
-                </label>
-                <label>
-                  Email
-                  <input type="email" placeholder="Your Email" required />
-                </label>
-                <label>
-                  Cover Letter
-                  <textarea placeholder="Tell us about yourself" required></textarea>
-                </label>
-                <button type="submit">Apply Now</button>
-              </form>
-            </div>
-          )}
-          {selectedOption === 3 && (
-            <div>
-              <h4>Service Request</h4>
-              <p>Request maintenance or repair services for your vehicle.</p>
-              <form className="service-form">
-                <label>
-                  Name
-                  <input type="text" placeholder="Your Name" required />
-                </label>
-                <label>
-                  Email
-                  <input type="email" placeholder="Your Email" required />
-                </label>
-                <label>
-                  Vehicle Details
-                  <input type="text" placeholder="Make & Model" required />
-                </label>
-                <label>
-                  Service Needed
-                  <textarea placeholder="Describe the service required" required></textarea>
-                </label>
-                <button type="submit">Request Service</button>
-              </form>
-            </div>
-          )}
-          {selectedOption === 4 && (
-            <div>
-              <h4>Test Drive</h4>
-              <p>Experience your preferred car with a scheduled test drive.</p>
-              <form className="service-form">
-                <label>
-                  Name
-                  <input type="text" placeholder="Your Name" required />
-                </label>
-                <label>
-                  Email
-                  <input type="email" placeholder="Your Email" required />
-                </label>
-                <label>
-                  Preferred Car Model
-                  <input type="text" placeholder="Car Model" required />
-                </label>
-                <label>
-                  Preferred Date
-                  <input type="date" required />
-                </label>
-                <label>
-                  Preferred Time
-                  <input type="time" required />
-                </label>
-                <button type="submit">Schedule Test Drive</button>
-              </form>
-            </div>
+          <h4>{services.find((s) => s.id === selectedOption).name}</h4>
+          {pending ? (
+            <p className="pending-text">Your request is pending. We will contact you soon.</p>
+          ) : (
+            renderForm()
           )}
         </div>
       )}
-    </>
+    </div>
   );
 };
 

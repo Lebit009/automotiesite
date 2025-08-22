@@ -9,10 +9,13 @@ import "./css/App.css";
 import Footer from "./pages/Footer";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+import Cart from "./pages/Cart";
+import CartContextProvider from "./pages/CartContext";
 
 const App = () => {
 
   return (
+    <CartContextProvider>
     <div className="app">
       <Navbar />
       <div className="container">
@@ -23,10 +26,12 @@ const App = () => {
           <Route path="/products" element={<Products />} />
           <Route path="/services" element={<Services />} />
           <Route path="/about" element={<About  />} />
+          <Route path="/cart" element={<Cart />} /> 
         </Routes>
       </div>
       <Footer />
     </div>
+    </CartContextProvider>
   );
 };
 
