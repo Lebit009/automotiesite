@@ -2,9 +2,9 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: #ffffff;
-  color: rgb(0, 0, 0);
-  padding: 1rem 10%;
+  background: linear-gradient(to bottom, #9525ff 0%, transparent 100%);
+  color: rgb(255, 255, 255);
+  padding: 1rem 8%;
   position: fixed;
   top: 0;
   left: 0;
@@ -36,6 +36,7 @@
 .navbar-link-container li .nav-link {
   padding: 0.5rem 1rem;
   text-decoration: none;
+    color: #f0f0f0;
 }
 .navbar-link-container li:hover .nav-link {
   border-bottom: 2px solid #3e0079;
@@ -45,17 +46,35 @@
   padding: 0.5rem 1rem;
   text-decoration: none;
 }
-.light-mode-icon {
-  width: 24px;
-  height: 24px;
-  padding: 0;
-  margin: 0;
-  display: block;
+.navbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
-.dark-mode-icon {
-  width: 24px;
-  height: 24px;
-  padding: 0;
-  margin: 0;
-  display: block;
+
+.navbar-cart {
+  display: flex;
+  align-items: center;
+  padding: 0.3rem 0.6rem;
+  border-radius: 6px;
+  color: #000000;
+  background: transparent;
+  transition: background 0.2s;
+}
+
+.navbar-cart:hover {
+  background: none;
+  color: rgb(255, 255, 255);
+}
+.navbar-auth-toggle {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+  width: 120px;
+  height: 40px;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(149, 37, 255, 0.1);
 }

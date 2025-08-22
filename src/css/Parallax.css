@@ -1,41 +1,40 @@
-/* Container provides scrollable space */
 .px-section {
   position: relative;
-  height: 50vh; /* taller than viewport to show the effect while scrolling */
+  height: 50vh;
+  overflow: visible; 
 }
 
-/* The sticky viewport pins while its parent scrolls past */
 .px-viewport {
   position: sticky;
   top: 0;
   height: 50vh;
-  overflow: hidden; /* hide the moving background overflow */
+  overflow: hidden;
+  z-index: 2;
 }
 
-/* Background layer that moves slower than scroll content */
 .px-layer {
   position: absolute;
   inset: 0;
   will-change: transform;
-  transform: translateY(-30%);
+  transform: translateY(0);
+  z-index: 1;
 }
 
-/* The background image itself */
 .px-bg {
   position: absolute;
-  inset: -15vh 0; /* bleed image outside to avoid edges showing */
-  background-image: url("../assets/img/service.png");
+  inset: 0;
   background-size: cover;
   background-position: center;
   filter: brightness(.8);
-  transform: translateZ(0); /* force GPU */
-  height: 120vh; /* larger than viewport to cover during movement */
+  transform: translateZ(0);
+  height: 100%;
+  width: 100%;
 }
 
 /* Foreground content sits above */
 .px-content {
   position: relative;
-  z-index: 1;
+  z-index: 3;
   display: grid;
   place-items: center;
   height: 50vh;
@@ -52,20 +51,4 @@
 .px-content p {
   font-size: clamp(1rem, 2.2vw, 1.25rem);
   margin: 0;
-}
-
-/* Optional: add subtle motion on scroll with CSS only (no JS)
-   by animating layer position relative to parent height */
-.px-section {
-  --depth: 50vh;  /* tweak for stronger/weaker effect */
-}
-.px-layer {
-  /* This uses viewport units; for even smoother control add tiny JS to map scroll to translateY */
-  animation: pxFloat linear both;
-  animation-timeline: scroll();
-  animation-range: 0 100%;
-}
-@keyframes pxFloat {
-  from { transform: translateY(0%); }
-  to   { transform: translateY(var(--depth)); }
 }

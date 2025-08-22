@@ -2,6 +2,12 @@ import "../css/Hero.css";
 import logo from "../assets/img/logo.png";
 import Title from "./Title";
 import "../css/Parallax.css";
+import serviceworker from "../assets/img/service.png";
+import royalty from "../assets/img/royalty.png";
+import lambo from "../assets/img/lambo.png";
+import bmw from "../assets/img/bmw.png";
+import vw from "../assets/img/ww.png";
+import supercar from "../assets/img/super.png";
 
 const analytics = [
   {
@@ -29,6 +35,7 @@ const analytics = [
     label: "Rating",
   },
 ];
+
 
 const Hero = () => {
   return (
@@ -91,29 +98,31 @@ const Hero = () => {
           </div>
         </div>
       </section>
-     <section className="px-section">
-      <div className="px-viewport">
-        <div className="px-layer">
-          <div className="px-bg" />
+      <section className="px-section">
+        <div className="px-viewport">
+          <div className="px-layer">
+            <div className={`px-bg`}>
+              <img src={serviceworker} alt="Service Worker" />
+            </div>
+          </div>
+          <div className="px-content">
+            <h1>Book a Test Drive</h1>
+            <p>Feel the performance before you decide.</p>
+          </div>
         </div>
-        <div className="px-content">
-          <h1>Book a Test Drive</h1>
-          <p>Feel the performance before you decide.</p>
-        </div>
-      </div>
-    </section>
+      </section>
       <section className="why-prefer-section">
         <Title
-        title="Why Prefer Us?"
-        subtitle={<p>Your satisfaction is our priority.</p>}
-      />
+          title="Why Prefer Us?"
+          subtitle={<p>Your satisfaction is our priority.</p>}
+        />
         <div className="why-prefer-cards">
           {analytics.map((card, idx) => (
             <div className="why-prefer-card" key={idx}>
               <h3>{card.title}</h3>
               <p>{card.desc}</p>
-                <span className="analytics-value">{card.value}</span>
-                <span className="analytics-label">{card.label}</span>
+              <span className="analytics-value">{card.value}</span>
+              <span className="analytics-label">{card.label}</span>
             </div>
           ))}
         </div>
