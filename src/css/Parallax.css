@@ -1,54 +1,70 @@
 .px-section {
   position: relative;
-  height: 50vh;
-  overflow: visible; 
+  width: 100%;
+  height: 30vh; /* reduced height */
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
 }
 
 .px-viewport {
-  position: sticky;
-  top: 0;
-  height: 50vh;
-  overflow: hidden;
-  z-index: 2;
+  position: relative;
+  width: 100%;
+  height: 100%;
 }
 
 .px-layer {
   position: absolute;
-  inset: 0;
-  will-change: transform;
-  transform: translateY(0);
-  z-index: 1;
-}
-
-.px-bg {
-  position: absolute;
-  inset: 0;
-  background-size: cover;
-  background-position: center;
-  filter: brightness(.8);
-  transform: translateZ(0);
-  height: 100%;
+  top: 0;
+  left: 0;
   width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1;
 }
 
-/* Foreground content sits above */
+.px-bg img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 140%;
+  object-fit: cover;
+  transform: translateY(0);
+  will-change: transform;
+}
+
 .px-content {
   position: relative;
-  z-index: 3;
-  display: grid;
-  place-items: center;
-  height: 50vh;
+  z-index: 2;
+  margin-top: 10vh;
   text-align: center;
-  color: #fff;
-  padding: 0 1rem;
-  text-shadow: 0 6px 24px rgba(0,0,0,.35);
+  padding: 1rem;
 }
 
 .px-content h1 {
-  font-size: clamp(2rem, 5vw, 4rem);
-  margin: 0 0 .5rem;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
 }
+
 .px-content p {
-  font-size: clamp(1rem, 2.2vw, 1.25rem);
-  margin: 0;
+  font-size: 1rem;
+}
+
+.px-bg img {
+  transform: translateY(calc(var(--scroll, 0) * 0.3));
+  transition: transform 0.1s linear;
+}
+
+
+@media (max-width: 768px) {
+  .px-content h1 {
+    font-size: 2rem;
+  }
+  .px-content p {
+    font-size: 1rem;
+  }
 }

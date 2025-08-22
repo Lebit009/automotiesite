@@ -11,7 +11,7 @@
   width: 250px;
   border-right: 2px solid #ddd;
   padding-right: 20px;
-  margin-left: 6%;
+  margin-left: 40%;
 }
 
 .search-bar {
@@ -50,6 +50,8 @@
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 20px;
   padding: 20px;
+  margin-left: 10%;
+  margin-right: 8%;
 }
 
 .product-card {
@@ -134,10 +136,15 @@
 }
 
 @media (max-width: 600px) {
+  .product-grid{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+     margin: 0;
+  }
   .product-card {
-    width: 100%;
-    min-width: 0;
-    margin: 0 auto;
+    width: 220px;
+   
   }
   .products-sidebar {
     padding-bottom: 10px;
