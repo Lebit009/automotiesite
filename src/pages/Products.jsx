@@ -17,6 +17,7 @@ const products = [
     price: "$49.99",
     image: brakePadsImg,
     rating: 4.7,
+    category: "Brakes",
   },
   {
     id: 2,
@@ -24,6 +25,7 @@ const products = [
     price: "$12.99",
     image: oilFilterImg,
     rating: 4.5,
+    category: "Oil Filters",
   },
   {
     id: 3,
@@ -31,6 +33,7 @@ const products = [
     price: "$8.99",
     image: sparkPlugImg,
     rating: 4.6,
+    category: "Spark Plugs",
   },
   {
     id: 4,
@@ -38,6 +41,7 @@ const products = [
     price: "$119.99",
     image: carBatteryImg,
     rating: 4.8,
+    category: "Batteries",
   },
   {
     id: 5,
@@ -45,6 +49,7 @@ const products = [
     price: "$15.99",
     image: airFilterImg,
     rating: 4.4,
+    category: "Air Filters",
   },
   {
     id: 6,
@@ -52,6 +57,7 @@ const products = [
     price: "$24.99",
     image: headlightBulbImg,
     rating: 4.3,
+    category: "Headlights",
   },
   {
     id: 7,
@@ -59,6 +65,7 @@ const products = [
     price: "$19.99",
     image: windshieldWipersImg,
     rating: 4.2,
+    category: "Wipers",
   },
   {
     id: 8,
@@ -66,7 +73,8 @@ const products = [
     price: "$89.99",
     image: radiatorImg,
     rating: 4.6,
-  },
+    category: "Radiators",
+  }
 ];
 
 const tabLabels = [
@@ -83,11 +91,11 @@ const Products = () => {
   const [search, setSearch] = useState("");
   const [selected, setSelected] = useState(null);
 
-  const filteredProducts = selected
-    ? products.filter((p) => p.name === selected)
-    : products.filter((p) =>
-        p.name.toLowerCase().includes(search.toLowerCase())
-      );
+  const filteredProducts = search
+    ? products.filter((p) => p.name.toLowerCase().includes(search.toLowerCase()))
+    : selected
+      ? products.filter((p) => p.category === selected)
+      : products;
   return (
     <div className="products-layout">
       {/* Layout 1 SEarch and tabs*/}
@@ -104,16 +112,16 @@ const Products = () => {
           className="search-bar"
         />
         <div className="tabs">
-          {products.map((p) => (
+          {tabLabels.map((label) => (
             <button
-              key={p.id}
-              className={`tab-btn ${selected === p.name ? "active" : ""}`}
+              key={label}
+              className={`tab-btn ${selected === label ? "active" : ""}`}
               onClick={() => {
-                setSelected(p.name);
+                setSelected(label);
                 setSearch("");
               }}
             >
-              {p.name}
+              {label}
             </button>
           ))}
         </div>

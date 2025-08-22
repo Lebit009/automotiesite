@@ -1,7 +1,7 @@
 import "../css/Hero.css";
 import Title from "./Title";
 import "../css/Parallax.css";
-import serviceworker from "../assets/img/service.png";
+import serviceworker from "../assets/img/service2.png";
 
 const analytics = [
   {
