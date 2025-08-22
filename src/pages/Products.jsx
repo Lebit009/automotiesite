@@ -124,21 +124,7 @@ const Products = () => {
             <img src={product.image} alt={product.name} />
             <h3>{product.name}</h3>
             <p className="price">{product.price}</p>
-            <button
-              className="add-to-cart"
-              onClick={() => {
-                let cart = JSON.parse(localStorage.getItem("cart")) || [];
-                const existing = cart.find(item => item.id === product.id);
-                if (existing) {
-                  existing.quantity = (existing.quantity || 1) + 1;
-                } else {
-                  cart.push({ ...product, quantity: 1 });
-                }
-                localStorage.setItem("cart", JSON.stringify(cart));
-              }}
-            >
-              Add to Cart
-            </button>
+            <button className="add-to-cart">Add to Cart</button>
           </div>
         ))}
       </div>
