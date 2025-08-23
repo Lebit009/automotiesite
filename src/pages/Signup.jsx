@@ -72,7 +72,7 @@ const Signup = () => {
           </button>
         </div>
         <div className="login-link">
-         Already have an account? <a href="/login">Login</a>
+         Already have an account? <NavLink to="/login">Login</NavLink>
         </div>
       </form>
       {message && <p className="register-message">{message}</p>}
